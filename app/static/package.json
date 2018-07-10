@@ -1,0 +1,24 @@
+{
+  "name": "Israel-Portfolio",
+  "version": "0.1.0",
+  "description": "Israel Portfolio 2018",
+  "main": "wsgi.py",
+  "dependencies": {
+    "bootstrap": "^4.0.0",
+    "muicss": "^0.9.35",
+    "popper.js": "^1.14.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/israel-fl/Portfolio.git"
+  },
+  "bugs": {
+    "url": "https://github.com/israel-fl/Portfolio/issues"
+  },
+  "author": "Israel Flores",
+  "license": "MIT",
+  "homepage": "https://github.com/israel-fl/Portfolio"
+}

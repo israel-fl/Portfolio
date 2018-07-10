@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+<!-- Load in styles -->
+{% block styles %}
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/index.css')|autoversion }}"/>
+{% endblock %}
+
+{% block body %}
+    {{ super() }}
+    <!--================== Navigation ==================-->
+
+    <nav class="navbar navbar-expand-lg navigation-bar"
+         id="navigation-bar">
+        <button id="menu-toggle"
+                class="mobile-nav hamburger hamburger--squeeze nav-toggle hidden-xs"
+                type="button">
+            <span class="hamburger-box">
+                <span class="hamburger-inner" id="hamburger-inner"></span>
+            </span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link nav-sub-menu-show products"
+                       id="products-button">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-exclude" href="/plans">Plans</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-exclude" href="/about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-exclude" href="/team">Team</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-exclude" href="/help">Help</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container-fluid mobile-menu hidden-xs" id="mobile-menu">
+        <div class="row h-100">
+            <div class="col-xs-6 my-auto text-center mobile-menu-content">
+                <div class="mobile-nav" id="mobile-nav">
+                    <ul>
+                        <li><a href="/plans"><i class="material-icons">today</i>Plans</a>
+                        </li>
+                        <li><a href="/help"><i class="material-icons">help</i>Help</a>
+                        </li>
+                        <li><a href="/about"><i class="material-icons">perm_identity</i>About
+                            Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-xs-6 mobile-menu-overlay" id="mobile-menu-outside">
+                <div class="mobile-menu-overlay-content">&nbsp;</div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12 main-header">
+                Hi.
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+<!-- End of body block -->
+
+<!--================== Footer ==================-->
+{% block footer %}
+    <footer>
+
+        {% if not session["cookies_collapsed"] %}
+            <div class="container-fluid cookie-banner" id="cookie-banner">
+                <div class="row h-100">
+                    <div class="col-sm-9 nav-banner-textwrap my-auto">
+                        <h4>Hey there, I use only use Google Analytics to monitor traffic. Feel free to opt out. <a
+                                    href="/privacy">Got it</a> <a>Not today Big Brother! Opt out</a></h4>
+                    </div>
+                    <div class="col-sm-3 text-center my-auto got-it-cookie">
+                        <button class="mui-btn mui-btn--raised cookie-btn"
+                                id="close-cookie-banner">
+                            Got it
+                        </button>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </footer>
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    <script defer
+            src="{{ url_for('static', filename='js/index.js')|autoversion }}"></script>
+{% endblock %}

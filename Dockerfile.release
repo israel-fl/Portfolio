@@ -1,0 +1,47 @@
+# Setup intermediate image to clone the repository
+FROM ubuntu:16.04 as intermediate
+
+# install git
+RUN apt-get update && apt-get install -y git
+
+ARG SSH_PRIVATE_KEY
+RUN mkdir /root/.ssh/
+RUN echo "${SSH_PRIVATE_KEY}" > /root/.ssh/id_rsa
+RUN chmod 600 /root/.ssh/id_rsa
+
+# make sure your domain is accepted
+RUN touch /root/.ssh/known_hosts
+RUN ssh-keyscan github.com >> /root/.ssh/known_hosts
+RUN eval $(ssh-agent); ssh-add /root/.ssh/id_rsa
+RUN git clone -b israel/pre-launch git@github.com:Tnate95/RiVE_Website.git /rive_website
+
+# For Python 3.6
+FROM ubuntu:16.04
+
+# Copy the previous image which now contains the codebase
+COPY --from=intermediate /rive_website /src
+
+# Update packages
+RUN apt-get update -y
+
+# Install Python Setuptools
+RUN apt-get install -y python3-setuptools python3-dev build-essential python3-pip unixodbc unixodbc-dev python3-dev libmysqlclient-dev apt-transport-https nodejs npm
+
+# Install requirements
+RUN pip3 install -r /src/requirements.txt
+
+# Install NPM dependencies
+RUN npm install --prefix /src/app/static
+RUN cp -R /src/app/static/node_modules /src/app/dist/node_modules
+
+# Make necessary directories
+RUN mkdir -p /src/logs
+
+# Expose
+EXPOSE 5000
+
+# Mount Static files volume
+VOLUME /src/app/dist
+
+# Run
+CMD cd /src/ && gunicorn --log-config logging.conf -c gunicorn_conf.py wsgi:app

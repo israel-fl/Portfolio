@@ -1,0 +1,16 @@
+{% extends "index.html" %}
+{% block title %} 404 Not found {% endblock %}
+{% block meta_description %}Page not found.{% endblock %}
+
+{% block styles %}
+    {{ super() }}
+    <link href="{{ url_for('static', filename='css/404.css')|autoversion }}"
+          rel="stylesheet" type="text/css"/>
+{% endblock %}
+
+{% block body %}
+    <!-- Body-->
+    <body>
+    {{ super() }}
+    </body>
+{% endblock %}
