@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+
+{% block title %}Home{% endblock %}
 <!-- Load in styles -->
 {% block styles %}
     <link rel="stylesheet"
@@ -7,6 +9,7 @@
 {% endblock %}
 
 {% block body %}
+    <body class="background">
     {{ super() }}
     <!--================== Navigation ==================-->
 
@@ -62,14 +65,23 @@
     </div>
 
 
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-12 main-header">
-                Hi.
+    <div class="main-header">
+        <div class="container-fluid h-100">
+            <div class="row section"></div>
+            <div class="row section">
+                <div class="col-sm-12 text-center my-auto">
+                    <h1 class="header-title text-gray">Hello.</h1>
+                </div>
+            </div>
+            <div class="row section">
+                <div class="col-sm-12 text-center">
+                    <h3 class="text-gray scroll-down">Let's get started</h3>
+                    <a id="scroll-d"><i class="material-icons text-gray expand">expand_more</i></a>
+                </div>
             </div>
         </div>
     </div>
-
+    </body>
 {% endblock %}
 <!-- End of body block -->
 
@@ -82,7 +94,7 @@
                 <div class="row h-100">
                     <div class="col-sm-9 nav-banner-textwrap my-auto">
                         <h4>Hey there, I use only use Google Analytics to monitor traffic. Feel free to opt out. <a
-                                    href="/privacy">Got it</a> <a>Not today Big Brother! Opt out</a></h4>
+                                href="/privacy">Got it</a> <a>Not today Big Brother! Opt out</a></h4>
                     </div>
                     <div class="col-sm-3 text-center my-auto got-it-cookie">
                         <button class="mui-btn mui-btn--raised cookie-btn"
