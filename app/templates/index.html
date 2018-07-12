@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block body %}
-    <body class="background">
+    <body class="background" id="particles">
     {{ super() }}
     <!--================== Navigation ==================-->
 
@@ -68,11 +68,7 @@
     <div class="main-header">
         <div class="container-fluid h-100">
             <div class="row section"></div>
-            <div class="row section">
-                <div class="col-sm-12 text-center my-auto">
-                    <h1 class="header-title text-gray">Hello.</h1>
-                </div>
-            </div>
+            <div class="row section"></div>
             <div class="row section">
                 <div class="col-sm-12 text-center">
                     <h3 class="text-gray scroll-down">Let's get started</h3>
@@ -80,36 +76,55 @@
                 </div>
             </div>
         </div>
-    </div>
+
+        <div class="section-2">
+            <div class="center-header">
+                <h1 class="text-gray">Hello.</h1>
+                <h4 class="text-gray">i am a</h4><h3 class="text-gray">UX/UI Designer</h3>
+            </div>
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-sm-5">
+
+                    </div>
+                    <div class="col-sm-5">
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </body>
 {% endblock %}
 <!-- End of body block -->
 
 <!--================== Footer ==================-->
 {% block footer %}
-    <footer>
-
-        {% if not session["cookies_collapsed"] %}
-            <div class="container-fluid cookie-banner" id="cookie-banner">
-                <div class="row h-100">
-                    <div class="col-sm-9 nav-banner-textwrap my-auto">
-                        <h4>Hey there, I use only use Google Analytics to monitor traffic. Feel free to opt out. <a
-                                href="/privacy">Got it</a> <a>Not today Big Brother! Opt out</a></h4>
-                    </div>
-                    <div class="col-sm-3 text-center my-auto got-it-cookie">
-                        <button class="mui-btn mui-btn--raised cookie-btn"
-                                id="close-cookie-banner">
-                            Got it
-                        </button>
-                    </div>
-                </div>
-            </div>
-        {% endif %}
-    </footer>
+    {#    <footer>#}
+    {##}
+    {#        {% if not session["cookies_collapsed"] %}#}
+    {#            <div class="container-fluid cookie-banner" id="cookie-banner">#}
+    {#                <div class="row h-100">#}
+    {#                    <div class="col-sm-9 nav-banner-textwrap my-auto">#}
+    {#                        <h4>Hey there, I use only use Google Analytics to monitor traffic. Feel free to opt out. <a#}
+    {#                                href="/privacy">Got it</a> <a>Not today Big Brother! Opt out</a></h4>#}
+    {#                    </div>#}
+    {#                    <div class="col-sm-3 text-center my-auto got-it-cookie">#}
+    {#                        <button class="mui-btn mui-btn--raised cookie-btn"#}
+    {#                                id="close-cookie-banner">#}
+    {#                            Got it#}
+    {#                        </button>#}
+    {#                    </div>#}
+    {#                </div>#}
+    {#            </div>#}
+    {#        {% endif %}#}
+    {#    </footer>#}
 {% endblock %}
 
 {% block scripts %}
     {{ super() }}
     <script defer
             src="{{ url_for('static', filename='js/index.js')|autoversion }}"></script>
+    <script defer
+            src="{{ url_for('static', filename='js/particles.js')|autoversion }}"></script>
 {% endblock %}
