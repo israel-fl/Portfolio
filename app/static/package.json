@@ -5,7 +5,7 @@
   "main": "wsgi.py",
   "dependencies": {
     "bootstrap": "^4.0.0",
-    "jquery": "^3.3.1",
+    "jquery": "^3.5.0",
     "muicss": "^0.9.35",
     "popper.js": "^1.14.2",
     "react": "^16.4.1"
