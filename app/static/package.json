@@ -4,7 +4,7 @@
   "description": "Israel Portfolio 2018",
   "main": "wsgi.py",
   "dependencies": {
-    "bootstrap": "^4.0.0",
+    "bootstrap": "^4.3.1",
     "jquery": "^3.3.1",
     "muicss": "^0.9.35",
     "popper.js": "^1.14.2",
